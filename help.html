@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block title %}
+Help
+{% endblock %}
+
+{% block content %}
+<div class = "helpInfo"><a href="/">Home</a></div>
+<br>
+<div class = "helpTitle">What is this website?</div>
+<div class = "helpInfo">This website is a tool for the Yi-Gi-Oh! Trading Card game.
+   It allows you to create a deck using the <a href = "/deckEditor">deck editor</a>. (It is recommended to start here)<br>
+   You can look at other people's decks in the <a href = "/decks">public decks</a> page.<br>
+   You can see how your deck plays in the <a href = "/testArena">test arena</a>.<br>
+   You can see how likely you will draw certain cards in <a href = "/chancesMode">chances mode</a>.
+   <br>All the features of this website require an accout except the public decks page.
+</div>
+<br>
+<div class = "helpTitle">Deck editor</div>
+<div class = "helpInfo">The <a href = "/deckEditor">deck editor</a> is the main starting point for using this website.
+   On the right hand side is a search system. There are many filters to find the card you want.
+   You automatically start with a new deck. Clicking on cards will add them to the main/extra deck,
+   and right clicking will add them to the side deck. You can save your deck and it will be linked
+   to your account.<br>
+   Left clicking on the large image on the left, or middle clicking on a small image, will bring up
+   an information screen for the card, with all its stats as well as printings and rarities.
+</div>
+<br>
+<div class = "helpTitle">Public decks</div>
+<div class = "helpInfo">You can go to the <a href = "/decks">public decks</a> page and view published decks, including some
+   search filters. You can like other people's decks, download a .ydk file of a deck, ans save a
+   deck to your account for you to edit.
+   <br>In the deck editor, you can publish your deck if it is legal for TCG play. This will put it
+   on the public decks page for others to view. Any changes you make to the deck after publishing
+   it will not affect the published version unless you click "publish" again which will update
+   it.
+</div>
+<br>
+<div class = "helpTitle">Importing and exporting decks</div>
+<div class = "helpInfo">From the <a href = "/deckEditor">deck editor</a> <a href = "/decks">public decks</a>
+   page, you can click to export the deck you're viewing. This will turn it into a .ydk file of the
+   same name as the deck, which can be used by other sites like <a href = "https://ygoprodeck.com/deckbuilder/">Ygoprodeck</a>
+   or <a href = "https://www.duelingbook.com/">Dueling Book.</a>
+   <br>In the deck editor, you can import a .ydk file from your device. This can be edited and saved.
+</div>
+<br>
+<div class = "helpTitle">Test arena</div>
+<div class = "helpInfo">Once you've made a deck, you can bring it to the <a href = "/testArena">test arena</a>.
+   You will be given a hand of 5 cards from your deck to see how the hand would play if you drew it in-game.
+   <br>You can click a card to get the options to move it wherever you want. Right clicking a
+   card will perform a quick move, which depends on where the card is.
+   <br>Note that this is manual, as the  game's rules are not specified in the code; you must
+   understand how yugioh is played to get value from this feature.
+
+</div>
+<br>
+<div class = "helpTitle">Chances mode</div>
+<div class = "helpInfo">The <a href = "/chancesMode">chances mode</a> feature also requires a deck.
+   You can assign 1 of 3 groups to any number of cards in your deck on the main display. Once this
+   is done, you can use the right side of the screen. It shows the probability of drawing different
+   combinations of your groups in a hand of specified size. You can change which groups are referred
+   to, and adjust the number drawn from each.
+   <br>For example, the line "DRAW 1 to 2 red; Chance: X%" means that X% of the time, you will draw
+   1 or 2 red cards.
+   <br>"DRAW 0 to 2 yellow; AND 1 to 1 blue; Chance: Y%" means that Y% of the time, you will get
+   1 blue in your hand, in addition to either 0, 1 or 2 yellow cards.
+</div>
+<br>
+<div class = "helpTitle">Legal</div>
+<div class = "helpInfo">Only joking</div>
+<br>
+<div class = "helpInfo"><a href="/">Home</a></div>
+{% endblock %}

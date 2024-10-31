@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}
+Log in
+{% endblock %}
+
+{% block content %}
+<div class = "wrapper">
+<div class = "large">
+   <!-- Display messages such as "signed in successfully" -->
+   <div class = "logInBox">
+      <h2 class = "msg" style="margin-top:2vh">Not signed in</h2>
+      <form autocomplete="a">
+         <h4>Username:
+            <input type="text" name = "username" class = "inputBox" autocomplete="b"></h4>
+         <h4>Password:
+            <input type="password" name = "password" class = "inputBox" autocomplete="c"></h4>
+            <div class = "logButton login grow">Log in</div>
+            <div class = "logButton signup grow">Sign up</div>
+   </div>
+
+   <div class = "largeMenuBox grey" style = "margin-left:15%">
+      <h2>Deck Editor</h2>
+      <h3>Log in to use</h3>
+   </div>
+
+   <a href="/decks"><div class = "largeMenuBox grow" style = "float:right; margin-right:15%">
+      <h2>View Public Decks</h2>
+   </div></a>
+
+</div>
+
+<div class="large">
+   <div class = "testArena">
+   <div class = "largeMenuBox grey">
+      <h2>Test Arena</h2>
+      <h3>Log in to use</h3>
+   </div>
+   </div>
+   <div class = "testArena">
+      <div class = "largeMenuBox grey">
+         <h2>Chances Mode</h2>
+         <h3>Log in to use</h3>
+      </div>
+      </div>
+    <div class = "helpOuter">
+      <a href = "/help">
+         <div class = "largeMenuBox grow">
+            <h2>Help</h2>
+      </div></a>
+    </div>
+   <!-- <div class = "home"><h1>Home</h1></div> -->
+</div>
+</div>
+<script src="{{ url_for('static',filename='javascript/login.js') }}"></script>
+
+{% endblock %}

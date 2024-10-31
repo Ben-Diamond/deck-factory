@@ -1,0 +1,20 @@
+<html>
+<head>
+    <title>{% block title %}{% endblock %} | Deck factory</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}" type="text/css">
+    <meta charset="UTF-8" />
+    <meta name="viewport"id="viewport"/>
+    <!-- content="width=devide-width, initial-scale=1, maximum-scale=1.0, minimum-scale=0.25"  -->
+</head>
+
+<body oncontextmenu="return false;">
+<script src="{{ url_for('static',filename='javascript/base.js') }}"></script>
+
+    {% block content %}{% endblock %}
+
+<div class = "alertOuter">
+<!-- <div class = "alertInner">No space in deck!</div>  -->
+</div>
+
+</body>
+</html>

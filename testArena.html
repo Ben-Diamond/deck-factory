@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+{% block title %}Test arena{% endblock %}
+
+{% block content %}
+<div class = "wrapper arena">
+   <div class = "left">
+      <div class = "largeImage">
+      </div>
+      <div class = "move"> <!--These will say "to gy" or "move" - commands to move the cards around
+                           they apply to cards in any location mentioned in the classes after "hide"-->
+         <div class = "moveCardContainer hide"><div class = "moveCard grow" name="cancel">Cancel</div></div>
+         <div class = "moveCardContainer hide"><div class = "moveCard grow hand deck extra gy banished monster extraMonster" name="summonAtk">Summon ATK</div></div>
+         <div class = "moveCardContainer hide"><div class = "moveCard grow hand deck extra gy banished monster extraMonster" name="summonDef">Summon DEF</div></div>
+         <div class = "moveCardContainer hide"><div class = "moveCard grow scale" name="scale">Scale</div></div>
+         <div class = "moveCardContainer hide"><div class = "moveCard grow hand deck gy banished spell trap" name="activate">Activate</div></div>
+         <div class = "moveCardContainer hide"><div class = "moveCard grow hand deck extra gy banished monster spell trap extraMonster" name="set">Set</div></div>
+         <div class = "moveCardContainer hide"><div class = "moveCard grow fieldAtk fieldDef fieldSet monster extraMonster spell trap" name="move">Move</div></div>
+         <div class = "moveCardContainer hide"><div class = "moveCard grow fieldAtk fieldDef fieldSet gy banished monster spell trap" name="returnToHand">Return to Hand</div></div>
+         <div class = "moveCardContainer hide"><div class = "moveCard grow deck monster spell trap" name="addToHand">Add to hand</div></div>
+         <div class = "moveCardContainer hide"><div class = "moveCard grow fieldAtk fieldDef fieldSet gy banished extraMonster" name="toExtraDeck">To Extra deck</div></div>
+         <div class = "moveCardContainer hide"><div class = "moveCard grow hand deck extra banished fieldAtk fieldDef fieldSet monster extraMonster spell trap" name="toGy">To Graveyard</div></div>
+         <div class = "moveCardContainer hide"><div class = "moveCard grow hand deck extra fieldAtk fieldDef fieldSet gy monster extraMonster spell trap" name="banish">Banish</div></div>
+         <div class = "moveCardContainer hide"><div class = "moveCard grow hand deck extra fieldAtk fieldDef fieldSet gy monster extraMonster spell trap" name="banishFd">Banish FD</div></div>
+         <div class = "moveCardContainer hide"><div class = "moveCard grow hand fieldAtk fieldDef fieldSet gy banished monster spell trap" name="toDeck">To Deck</div></div>
+         <div class = "moveCardContainer hide"><div class = "moveCard grow fieldAtk monster extraMonster" name="toDef">To DEF</div></div>
+         <div class = "moveCardContainer hide"><div class = "moveCard grow fieldAtk fieldDef monster extraMonster spell trap" name="setF">Set</div></div>
+         <div class = "moveCardContainer hide"><div class = "moveCard grow fieldSet monster extraMonster spell trap" name="flip">Flip</div></div>
+         <div class = "moveCardContainer hide"><div class = "moveCard grow fieldDef monster extraMonster" name="toAtk">To ATK</div></div>
+      </div>
+   </div>
+
+<div class = "field">
+   <div class = "fieldLeft">
+      <div class = "top"> <!--top of the left side (has main menu button and interact with the deck)-->
+         <!-- <div class = "topLeftOption mainMenu"><img src="{{url_for('static',filename='/images/backgrounds/buttonMainMenu.jpg') }}"></div> -->
+         <div class = "mainMenu grow">Main Menu</div>
+         <div class = "topLeftOption"><div name="draw" class = "grow">Draw</div></div>
+         <div class = "topLeftOption"><div name="shuffle" class = "grow">Shuffle</div></div>
+         <div class = "topLeftOption"><div name="reset" class = "grow">Reset</div></div>
+         <div class = "topLeftOption"><div name="mill" class = "grow">Mill</div></div>
+         <div class = "topLeftOption"><div name="banishTop" class = "grow">Banish top</div></div>
+         <div class = "topLeftOption"><div name="banishTopFd" class = "grow">Banish top FD</div></div>
+      </div>
+      <div class = "middle">
+         <div class = "fieldSpell zone">
+
+         </div>
+      </div>
+      <div class = "bottom">
+         <div class = "extra container">
+         </div>
+      </div>
+   </div>
+   <div class = "fieldMiddle">
+      <div class = "row opp">
+         <div class = "st zone"><div class = "zoneBorder fulltop"></div></div>
+         <div class = "st zone"><div class = "zoneBorder fulltop"></div></div>
+         <div class = "st zone"><div class = "zoneBorder fulltop"></div></div>
+         <div class = "st zone"><div class = "zoneBorder fulltop"></div></div>
+         <div class = "st zone"><div class = "zoneBorder fulltop"></div></div>
+
+      </div>
+      <div class = "row opp">
+         <div class = "monster zone"><div class = "zoneBorder fullBottom"></div></div>
+         <div class = "monster zone"><div class = "zoneBorder"></div></div>
+         <div class = "monster zone"><div class = "zoneBorder fullBottom"></div></div>
+         <div class = "monster zone"><div class = "zoneBorder"></div></div>
+         <div class = "monster zone"><div class = "zoneBorder fullBottom"></div></div>
+
+      </div>
+      <div class = "row">
+         <div class = "emptyZone"></div>
+         <div class = "em zone"><div class = "zoneBorder"></div></div>
+         <div class = "emptyZone"></div>
+         <div class = "em zone"><div class = "zoneBorder"></div></div>
+         <div class = "emptyZone"></div>
+      </div>
+      <div class = "row">
+         <div class = "monster zone"><div class = "zoneBorder fulltop"></div></div>
+         <div class = "monster zone"><div class = "zoneBorder"></div></div>
+         <div class = "monster zone"><div class = "zoneBorder fulltop"></div></div>
+         <div class = "monster zone"><div class = "zoneBorder"></div></div>
+         <div class = "monster zone"><div class = "zoneBorder fulltop"></div></div>
+
+      </div>
+      <div class = "row">
+         <div class = "st zone"><div class = "zoneBorder fullBottom"></div></div>
+         <div class = "st zone"><div class = "zoneBorder fullBottom"></div></div>
+         <div class = "st zone"><div class = "zoneBorder fullBottom"></div></div>
+         <div class = "st zone"><div class = "zoneBorder fullBottom"></div></div>
+         <div class = "st zone"><div class = "zoneBorder fullBottom"></div></div>
+
+      </div>
+   </div>
+   <div class = "fieldRight">
+      <div class = "top">
+         <div class = "banished container"></div>
+      </div>
+      <div class = "middle">
+         <div class = "gy container"></div>
+      </div>
+      <div class = "bottom">
+         <div class = "deck container"></div>
+      </div>
+   </div>
+
+   <div class = "handContainer"><!--MAX 12-->
+      <!-- <div class = "hand"><img src="{{url_for('static',filename='/images/largeImages/2511.jpg') }}"></div>
+      <div class = "hand"><img src="{{url_for('static',filename='/images/largeImages/2511.jpg') }}"></div>
+      <div class = "hand"><img src="{{url_for('static',filename='/images/largeImages/2511.jpg') }}"></div> -->
+   </div>
+</div>
+<div class = "containerDisplay deckCards hide">
+   <div class = "banner">Main deck</div>
+   <div class = "close" onclick = "closeDisplay()">Close</div>
+   <span></span>
+</div>
+<div class = "containerDisplay extraCards hide">
+   <div class = "banner">Extra deck</div>
+   <div class = "close" onclick = "closeDisplay()">Close</div>
+   <span></span>
+</div>
+<div class = "containerDisplay gyCards hide">
+   <div class = "banner">Graveyard</div>
+   <div class = "close" onclick = "closeDisplay()">Close</div>
+   <span></span>
+</div>
+<div class = "containerDisplay banishedCards hide">
+   <div class = "banner">Banished cards</div>
+   <div class = "close" onclick = "closeDisplay()">Close</div>
+   <span></span>
+</div>
+<div class = "cardInfoDisplay hide">
+   <div class = "banner"></div>
+   <div class = "close">Close</div>
+   <span>
+      <div class = "bigInfoBox1"></div>
+      <div class = "bigInfoBox2"></div>
+   </span>
+
+</div>
+</div>
+<div class = "initialID hide">{{ deckID }}</div>
+<img class = "pend1" src = "./static/images/backgrounds/pend1.png">
+<img class = "pend2" src = "./static/images/backgrounds/pend2.png">
+<img class = "pend3" src = "./static/images/backgrounds/pend1.png">
+<img class = "pend4" src = "./static/images/backgrounds/pend2.png">
+<script src="{{ url_for('static',filename='javascript/testArena.js') }}"></script>
+
+
+{% endblock %}

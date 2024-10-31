@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+<div class = "wrapper">
+   <div class = "large">
+   <!-- Display messages such as "signed in successfully" -->
+   <div class = "logInBox">
+
+      <h2 style="margin-top:2vh">Signed in as {{data.execute("Select name FROM users WHERE ID = ?",[user]).fetchone()[0]}}</h2>
+      <form action="/logout" method = "POST">
+         <div style="display:flex;justify-content:center;width:100%;">
+         <input type="submit" value = "Log out" class = "logButton grow">
+         </div>
+      </form>
+   </div>
+
+   <a href="/deckEditor"><div class = "largeMenuBox grow" style = "margin-left:15%">
+      <h2>Deck Editor</h2>
+   </div></a>
+
+   <a href="/decks"><div class = "largeMenuBox grow" style = "float:right; margin-right:15%">
+      <h2>View Public Decks</h2>
+   </div></a>
+
+</div>
+
+<div class="large">
+   <div class = "testArena">
+      <div class = "largeMenuBox grow">
+         <h2>Test Arena</h2>
+      </div>
+      <div  class = "testarenalistcontainer">
+      {% for x in data.execute("SELECT decks.name,decks.legal,decks.ID FROM decks INNER JOIN users ON decks.userID = users.ID WHERE users.ID = ?",[user]).fetchall() %}
+      <div class = "{{x[2]}} testArenaList hide {% if not x[1] %} illegal {% endif %}">
+         {{x[0]}}
+      </div>
+      {% endfor %}</div>
+   </div>
+
+   <div class = "chancesMode">
+      <div class = "largeMenuBox grow">
+         <h2>Chances Mode</h2>
+      </div>
+      <div class = "chancesmodelistcontainer">
+      {% for x in data.execute("SELECT decks.name,decks.legal,decks.ID FROM decks INNER JOIN users ON decks.userID = users.ID WHERE users.ID = ?",[user]).fetchall() %}
+      <div class = "{{x[2]}} chancesModeList hide {% if not x[1] %} illegal {% endif %}">
+         {{x[0]}}
+      </div>
+      {% endfor %}</div>
+   </div>
+
+   <!-- <div class = "home"><h1>Home</h1></div> -->
+   <div class = "helpOuter">
+      <a href = "/help">
+         <div class = "largeMenuBox grow">
+            <h2>Help</h2>
+      </div></a>
+   </div>
+</div>
+</div>
+<script src="{{ url_for('static',filename='javascript/home.js') }}"></script>
+
+{% endblock %}

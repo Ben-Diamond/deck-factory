@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+{% block title %}Deck editor{% endblock %}
+
+{% block content %}
+
+<div class="wrapper">
+<div class = "left">
+   <!--large image display-->
+      <!-- <img src="{{ url_for('static',filename='/images/largeImages/21070956.jpg') }}">  -->
+   <div class = "largeImage">
+   </div>
+   <div class = "options"> <!--options-->
+      <div><div class="enabled o mainMenu">Main Menu</div></div>
+      <div><div class="o saveDeck saved">Deck Saved!</div></div>
+      <div><div class="enabled o switchDeck">Switch Deck</div>
+      <div class = "deckOptions hide">
+         <div class = "0">New deck</div>
+         {% for deck in decks %}
+            <div class = "{{ deck[0] }} {% if not deck[2] %} illegal {% endif %}"> {{ deck[1] }}</div>
+         {% endfor %}
+      </div>
+      </div>
+      <div><div class="enabled o renameDeck">Rename Deck</div></div>
+      <div><div class="o deleteDeck">Delete Deck</div></div>
+      <!-- <div><div class="enabled o chancesMode">Chances Mode</div></div> -->
+      <div><div class="o importDeck enabled">Import Deck</div></div>
+      <!-- <div><div class="o importDeck enabled"><input id="importdeck" type="file" accept=".ydk" oninput = "previewFile()">k</input></div></div> -->
+
+      <div><div class="o exportDeck">Export Deck</div></div>
+      <div><div class="o publishDeck">Publish Deck</div></div>
+      <div class="deckName 0">New deck</div> <!--this will display the name of the deck-->
+      <div class="deckCount">Count: 0</div> <!--this will display the number of cards in the deck-->
+
+      <!-- <input type="file" id="file-selector" accept=".ydk"> -->
+   </div>
+</div>
+<!-- The `multiple` attribute lets users select multiple files. -->
+
+
+<script>
+  const fileSelector = document.getElementById('file-selector');
+  fileSelector.addEventListener('click', (event) => {
+    const fileList = event.target.files;
+    console.log(fileList);
+  });
+</script>
+
+<div class = "centre">
+   {% for x in range(5) %} <!--5 rows that each have 12 cards. They will be filled in by javascript using the deck list-->
+      <div class = "mainDeckRow flexbox">
+         {% for y in range(12) %}
+            <div class = "smallImage flexbox">
+
+            </div>
+         {% endfor %}
+      </div>
+      {% endfor %}
+   <div class = "fillRow">Extra Deck</div> <!--Fills empty space to separate the different decks-->
+   <div class = "extraDeck flexbox">
+      {% for x in range(15) %}
+      <div class = "smallerImage">
+
+      </div>
+      {% endfor %}
+   </div>
+   <div class = "fillRow">Side Deck</div> <!--Fills empty space to separate the different decks-->
+   <div class = "sideDeck flexbox">
+      {% for x in range(15) %}
+      <div class = "smallerImage">
+
+      </div>
+      {% endfor %}
+   </div>
+</div>
+
+
+<div class="right">
+<div class="filters flexbox">
+   <form>
+      <input type="hidden" name = "cardType" value="monster">
+      <!--when the user clicks on one of the buttons below,
+         that will change this input value-->
+
+      <!--options for search-->
+      <div class = "cardType">All</div>
+      <div class = "cardType" style="width:30%">Monster</div>
+      <div class = "cardType">Spell</div>
+      <div class = "cardType">Trap</div>
+
+
+      <div class="textSearch">
+         <div>
+            Name:</div><input type="text" name="name" autocomplete="nope">
+      </div>
+      <div class="textSearch">
+         <div>Desc:</div><input type="text" name="desc" autocomplete="nope">
+      </div>
+
+      <div class = "selectRow">
+         <select name = "subtype">
+         </select>
+
+         <select name = "type">
+         </select>
+      </div>
+
+      <div class = "selectRow">
+         <select name = "attribute">
+         </select>
+
+
+         <select name = "level">
+         </select>
+      </div>
+
+      <div class="numSearch">
+         <div>ATK:</div><input type="text" name="atk" maxlength="4">
+      </div>
+
+      <div class="numSearch">
+         <div>DEF:</div><input type="text" name="def"  maxlength="4">
+      </div>
+
+
+   <input type = "hidden" name = "pageNumber" value = 1>
+
+   </form>
+
+   <div class="pageNumberRow">
+      <div class = "leftArrow">
+         <img src = "{{ url_for('static',filename='/images/backgrounds/leftArrow.png') }}" class = "hidden">
+      </div>
+      <div class = "pageNumber">
+
+      </div>
+      <div class = "rightArrow">
+         <img src = "{{ url_for('static',filename='/images/backgrounds/rightArrow.png') }}" class = "hidden">
+      </div>
+   </div>
+</div>
+
+
+{% for x in range(5) %} <!--search results-->
+
+<div class="resultRow">
+   {% for y in range(4) %}
+   <div class = "resultImage flexbox">
+   </div>
+   {% endfor %}
+   </div>
+{% endfor %}
+</div>
+</div>
+<div class = "cardInfoDisplay hide">
+   <div class = "banner"></div>
+   <div class = "close">Close</div>
+   <span>
+   <div class = "bigInfoBox1"></div>
+      <div class = "bigInfoBox2"></div>
+   </span>
+
+</div>
+<!-- 421x614 -->
+
+
+
+
+<div class = "initialID hide">{{ deckID }}</div>
+<script src="{{ url_for('static',filename='javascript/deckEditor.js') }}"></script>
+{% endblock %}

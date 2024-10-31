@@ -1,0 +1,194 @@
+{% extends "base.html" %}
+{% block title %}Chances Mode{% endblock %}
+
+{% block content %}
+<div class="wrapper">
+<div class = "left">
+   <div class = "cardInfoDisplay hide">
+      <div class = "banner"></div>
+      <div class = "close">Close</div>
+      <span>
+         <div class = "bigInfoBox1"></div>
+         <div class = "bigInfoBox2"></div>
+      </span>
+
+   </div>
+   <div class = "largeImage"> <!--large image display-->
+
+   </div>
+   <div class = "options"> <!--options-->
+      <!-- <div class="mainMenu flexbox"><img src="{{url_for('static',filename='/images/backgrounds/buttonMainMenu.jpg') }}"></div>
+
+      <div class="saveDeck saved flexbox"><img src="{{url_for('static',filename='/images/backgrounds/buttonDeckSaved.jpg') }}"></div> -->
+      <div><div class="enabled o mainMenu">Main Menu</div></div>
+      <div><div class="o saveGroups">Groups Saved!</div></div>
+      <div><div class="enabled o" onclick = "clearGroups()">Clear Groups</div></div>
+
+
+      <div><div class="enabled o switchDeck">Switch Deck</div>
+      <div class = "deckOptions hide">
+         <!-- no "new deck" option -->
+         {% for deck in decks %}
+            <div class = "{{ deck[0] }} "> {{ deck[1] }}</div>
+         {% endfor %}
+      </div>
+      </div>
+      <div><div class="enabled o deckEditor">Deck Editor</div></div>
+      <div class="deckName flexbox {{ decks[0][0] }}"> {{ decks[0][1] }}</div> <!--this will display the name of the deck-->
+   </div>
+</div>
+
+<div class = "centre"> <!--Mostly the same as deck editor-->
+   {% for x in range(5) %} <!--5 rows of 12 still exist-->
+      <div class = "mainDeckRow flexbox">
+         {% for y in range(12) %}
+            <div class = "smallImage flexbox">
+
+            </div>
+         {% endfor %}
+      </div>
+      {% endfor %}
+   <div class = "fillRow">Extra Deck</div> <!--Fills empty space to separate the different decks-->
+   <div class = "extraDeck flexbox">
+      {% for x in range(15) %}
+      <div class = "smallerImage">
+
+      </div>
+      {% endfor %}
+   </div>
+   <div class = "fillRow">Side Deck</div> <!--Fills empty space to separate the different decks-->
+   <div class = "sideDeck flexbox">
+      {% for x in range(15) %}
+      <div class = "smallerImage">
+
+      </div>
+      {% endfor %}
+   </div>
+</div>
+
+
+
+<div class="chances right">
+   <!--In here will go the input and output for calculations-->
+   <div class = "title">Chances Mode</div>
+   <div class = "description">Find the chance of drawing cards from different groups in your deck!
+      <span><br>Click on a card to change its group, right click to remove it</span>
+   </div>
+   <div class = "deckSize"></div>
+   <div class = "handSize"><div class = "txt">Hand size: 5</div>
+      <div class = "handSizeArrow"> <!--Change size of hand-->
+         <img class = "upArrow" src = "{{url_for('static',filename='/images/backgrounds/upArrow.png') }}">
+         <img class = "downArrow" src = "{{url_for('static',filename='/images/backgrounds/downArrow.png') }}">
+      </div>
+   </div>
+
+
+   <div class = "groupContainer one"> <!--Contains 1 group-->
+      <div class = "groupRow">
+      <div class = "drawNum">Draw 1</div>
+      <div class = "arrowContainer low"> <!--Low: adjusts the lower end of cards to draw from that group-->
+         <img class = "upArrow" reason = "Cannot draw more than exist" src = "{{url_for('static',filename='/images/backgrounds/upArrow.png') }}">
+         <img class = "downArrow" reason = "Cannot draw more than exist" src = "{{url_for('static',filename='/images/backgrounds/downArrow.png') }}">
+      </div>
+      <div class = "toNum">To 5</div>
+      <div class = "arrowContainer high"> <!--High: adjusts the upper end of cards to draw from that group-->
+         <img class = "upArrow" reason = "Cannot draw more than exist" src = "{{url_for('static',filename='/images/backgrounds/upArrow.png') }}">
+         <img class = "downArrow" reason = "Cannot draw more than exist" src = "{{url_for('static',filename='/images/backgrounds/downArrow.png') }}">
+      </div>
+      <div class = "groupImageContainer"> <!--Contains the group (red yellow or blue)-->
+         <img src = "{{url_for('static',filename='/images/backgrounds/group1.png') }}">
+      </div>
+   </div>
+   <div class = "chanceDisplayRow">Chance: 50%</div>
+   </div>
+
+
+   <div class = "groupcontainer two "> <!--Contains 2 groups-->
+      <div class = "groupRow">
+         <div class = "drawNum">Draw 1</div>
+         <div class = "arrowContainer low"> <!--Low: adjusts the lower end of cards to draw from that group-->
+            <img class = "upArrow" reason = "Cannot draw more than exist" src = "{{url_for('static',filename='/images/backgrounds/upArrow.png') }}">
+            <img class = "downArrow" reason = "Cannot draw more than exist" src = "{{url_for('static',filename='/images/backgrounds/downArrow.png') }}">
+         </div>
+         <div class = "toNum">To 5</div>
+         <div class = "arrowContainer high"> <!--High: adjusts the upper end of cards to draw from that group-->
+            <img class = "upArrow" reason = "Cannot draw more than exist" src = "{{url_for('static',filename='/images/backgrounds/upArrow.png') }}">
+            <img class = "downArrow" reason = "Cannot draw more than exist" src = "{{url_for('static',filename='/images/backgrounds/downArrow.png') }}">
+         </div>
+         <div class = "groupImageContainer"> <!--Contains the group (red yellow or blue)-->
+            <img src = "{{url_for('static',filename='/images/backgrounds/group1.png') }}">
+         </div>
+      </div>
+      <div class = "groupRow">
+         <div class = "drawNum">And 1</div>
+         <div class = "arrowContainer low"> <!--Low: adjusts the lower end of cards to draw from that group-->
+            <img class = "upArrow" reason = "Cannot draw more than exist" src = "{{url_for('static',filename='/images/backgrounds/upArrow.png') }}">
+            <img class = "downArrow" reason = "Cannot draw more than exist" src = "{{url_for('static',filename='/images/backgrounds/downArrow.png') }}">
+         </div>
+         <div class = "toNum">To 5</div>
+         <div class = "arrowContainer high"> <!--High: adjusts the upper end of cards to draw from that group-->
+            <img class = "upArrow" reason = "Cannot draw more than exist" src = "{{url_for('static',filename='/images/backgrounds/upArrow.png') }}">
+            <img class = "downArrow" reason = "Cannot draw more than exist" src = "{{url_for('static',filename='/images/backgrounds/downArrow.png') }}">
+         </div>
+         <div class = "groupImageContainer"> <!--Contains the group (red yellow or blue)-->
+            <img src = "{{url_for('static',filename='/images/backgrounds/group2.png') }}">
+         </div>
+      </div>
+   <div class = "chanceDisplayRow">Chance: 10%</div>
+   </div>
+
+   <div class = "groupcontainer three "> <!--Contains 3 groups-->
+      <div class = "groupRow">
+         <div class = "drawNum">Draw 1</div>
+         <div class = "arrowContainer low"> <!--Low: adjusts the lower end of cards to draw from that group-->
+            <img class = "upArrow" reason = "Cannot draw more than exist" src = "{{url_for('static',filename='/images/backgrounds/upArrow.png') }}">
+            <img class = "downArrow" reason = "Cannot draw more than exist" src = "{{url_for('static',filename='/images/backgrounds/downArrow.png') }}">
+         </div>
+         <div class = "toNum">To 5</div>
+         <div class = "arrowContainer high"> <!--High: adjusts the upper end of cards to draw from that group-->
+            <img class = "upArrow" reason = "Cannot draw more than exist" src = "{{url_for('static',filename='/images/backgrounds/upArrow.png') }}">
+            <img class = "downArrow" reason = "Cannot draw more than exist" src = "{{url_for('static',filename='/images/backgrounds/downArrow.png') }}">
+         </div>
+         <div class = "groupImageContainer"> <!--Contains the group (red yellow or blue)-->
+            <img src = "{{url_for('static',filename='/images/backgrounds/group1.png') }}">
+         </div>
+      </div>
+      <div class = "groupRow">
+         <div class = "drawNum">And 1</div>
+         <div class = "arrowContainer low"> <!--Low: adjusts the lower end of cards to draw from that group-->
+            <img class = "upArrow" reason = "Cannot draw more than exist" src = "{{url_for('static',filename='/images/backgrounds/upArrow.png') }}">
+            <img class = "downArrow" reason = "Cannot draw more than exist" src = "{{url_for('static',filename='/images/backgrounds/downArrow.png') }}">
+         </div>
+         <div class = "toNum">To 5</div>
+         <div class = "arrowContainer high"> <!--High: adjusts the upper end of cards to draw from that group-->
+            <img class = "upArrow" reason = "Cannot draw more than exist" src = "{{url_for('static',filename='/images/backgrounds/upArrow.png') }}">
+            <img class = "downArrow" reason = "Cannot draw more than exist" src = "{{url_for('static',filename='/images/backgrounds/downArrow.png') }}">
+         </div>
+         <div class = "groupImageContainer"> <!--Contains the group (red yellow or blue)-->
+            <img src = "{{url_for('static',filename='/images/backgrounds/group2.png') }}">
+         </div>
+      </div>
+      <div class = "groupRow">
+      <div class = "drawNum">And 1</div>
+      <div class = "arrowContainer low"> <!--Low: adjusts the lower end of cards to draw from that group-->
+         <img class = "upArrow" reason = "Cannot draw more than exist" src = "{{url_for('static',filename='/images/backgrounds/upArrow.png') }}">
+         <img class = "downArrow" reason = "Cannot draw more than exist" src = "{{url_for('static',filename='/images/backgrounds/downArrow.png') }}">
+      </div>
+      <div class = "toNum">To 5</div>
+      <div class = "arrowContainer high"> <!--High: adjusts the upper end of cards to draw from that group-->
+         <img class = "upArrow" reason = "Cannot draw more than exist" src = "{{url_for('static',filename='/images/backgrounds/upArrow.png') }}">
+         <img class = "downArrow" reason = "Cannot draw more than exist" src = "{{url_for('static',filename='/images/backgrounds/downArrow.png') }}">
+      </div>
+      <div class = "groupImageContainer"> <!--Contains the group (red yellow or blue)-->
+         <img src = "{{url_for('static',filename='/images/backgrounds/group3.png') }}">
+      </div>
+   </div>
+   <div class = "chanceDisplayRow">Chance: 10%</div>
+   </div>
+
+</div>
+
+</div>
+<div class = "initialID hide">{{ deckID }}</div>
+<script src="{{ url_for('static',filename='javascript/chancesMode.js') }}"></script>
+{% endblock %}

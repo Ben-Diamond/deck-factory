@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% block title %}Public decks{% endblock %}
+
+{% block content %}
+<div class="wrapper">
+<div class = "left flexbox">
+   <div class = "largeImage flexbox"> <!--large image display-->
+
+   </div>
+   <div class = "options flexbox"> <!--options-->
+      <div><div class="enabled o mainMenu">Main Menu</div></div>
+      <div><div class="o saveAs">Save<br>As</div></div>
+      <div><div class="o nextDeck">Next<br>Deck</div></div>
+      <div><div class="o previousDeck">Previous Deck</div></div>
+      <div><div class="o likeDeck">Like<br>Deck</div></div>
+      <div><div class="o enabled exportDeck">Export Deck</div></div>
+      <div class = "theDeck">deck</div>
+      <div class = "theUser">user</div>
+      <div class="likeCount">Likes: 0</div> <!--this will display the number of cards in the deck-->
+      <div class="deckCount"></div> <!--this will display the number of cards in the deck-->
+
+
+   </div>
+</div>
+
+<div class = "centre"> <!--Mostly the same as deck editor-->
+   {% for x in range(5) %} <!--5 rows of 12 still exist-->
+      <div class = "mainDeckRow flexbox">
+         {% for y in range(12) %}
+            <div class = "smallImage flexbox">
+
+            </div>
+         {% endfor %}
+      </div>
+      {% endfor %}
+   <div class = "fillRow">Extra Deck</div> <!--Fills empty space to separate the different decks-->
+   <div class = "extraDeck flexbox">
+      {% for x in range(15) %}
+      <div class = "smallerImage">
+
+      </div>
+      {% endfor %}
+   </div>
+   <div class = "fillRow">Side Deck</div> <!--Fills empty space to separate the different decks-->
+   <div class = "sideDeck flexbox">
+      {% for x in range(15) %}
+      <div class = "smallerImage">
+
+      </div>
+      {% endfor %}
+   </div>
+</div>
+
+
+
+<div class="decks right">
+   <!--In here will go the input and output for calculations-->
+   <div class = "title">Public Decks</div>
+   <div class = "description">See decks from other users
+      <span><br>You can filter by the options below</span>
+   </div>
+
+   <div class="heading">
+      Search for:
+   </div>
+      <!--Search by decks/cards-->
+   <div class = "dropDown">
+      <select name="legal">
+         <option value = "" selected>All decks</option>
+         <option value =  1>Liked decks</option>
+      </select>
+   </div>
+
+   <div class="textSearchDecks">
+      <div>Deck name</div><input type="text" name="name" autocomplete="nope">
+   </div>
+   <div class="textSearchDecks">
+      <div>Username</div><input type="text" name="searchUser" autocomplete="nope">
+   </div>
+   <div class="textSearchDecks">
+      <div>Card</div><input type="text" name="card" autocomplete="nope" value = "{{ search }}">
+   </div>
+
+
+
+   <div class="heading">
+      Sort by:
+   </div>
+   <div class = "dropDown">
+      <select name="sort">
+         <option value = "" selected>Date created</option>
+         <option value = "random">Random</option>
+      </select>
+   </div>
+   <div class = "search">
+      <div class = "grow">
+         Search
+      </div>
+
+   </div>
+
+
+
+</div>
+
+</div>
+<div class = "cardInfoDisplay hide">
+   <div class = "banner"></div>
+   <div class = "close">Close</div>
+   <span>
+      <div class = "bigInfoBox1"></div>
+      <div class = "bigInfoBox2"></div>
+   </span>
+
+</div>
+<script src="{{ url_for('static',filename='javascript/decks.js') }}"></script>
+<style>
+   div{
+      box-sizing:border-box;
+   }
+
+</style>
+{% endblock %}
